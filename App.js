@@ -50,8 +50,8 @@ export default function App () {
   return (
     // <ScrollMastery />
     // <DeatailsLoader />
-    <HorizonScroll />
-    // <MainNavigation></MainNavigation>
+    // <HorizonScroll />
+    <MainNavigation></MainNavigation>
   )
 }
 
