@@ -4,8 +4,8 @@ import {
   Text,
   StyleSheet,
   Animated,
-  Image,
-  Dimensions
+  Dimensions,
+  ImageBackground
 } from 'react-native'
 
 const ListItem = ({ item, ind, scrollX }) => {
@@ -21,7 +21,8 @@ const ListItem = ({ item, ind, scrollX }) => {
 
   const scale = scrollX.interpolate({
     inputRange,
-    outputRange: [1, 1, 0, 1, 0]
+    outputRange: [1, 1, 0, 1, 0],
+    extrapolate: 'clamp'
   })
 
   return (
@@ -35,10 +36,32 @@ const ListItem = ({ item, ind, scrollX }) => {
       }}
     >
       <View style={styles.imageContainer}>
-        <Image style={styles.image} source={{ uri: item.image }} />
+        <Animated.Image style={[styles.image]} source={{ uri: item.image }} />
       </View>
-      <Text style={styles.name}>{item.name}</Text>
-      <Text style={styles.team}>{item.team}</Text>
+      <Animated.View
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          transform: [
+            {
+              translateX: scrollX.interpolate({
+                inputRange: [
+                  w100 * ind - 2,
+                  w100 * ind - 1,
+                  w100 * ind,
+                  w100 * ind + 1,
+                  w100 * ind + 2
+                ],
+                outputRange: [0, -10, 0, 10, 0]
+                // extrapolate: 'clamp'
+              })
+            }
+          ]
+        }}
+      >
+        <Text style={styles.name}>{item.name}</Text>
+        <Text style={styles.team}>{item.team}</Text>
+      </Animated.View>
     </Animated.View>
   )
 }
@@ -134,6 +157,7 @@ const HorizonScroll = props => {
       <Animated.ScrollView
         style={{ flex: 1 }}
         horizontal
+        scrollEventThrottle={2}
         snapToInterval={w100}
         showsHorizontalScrollIndicator={false}
         decelerationRate='fast'
@@ -191,8 +215,9 @@ const styles = StyleSheet.create({
     height: '70%'
   },
   image: {
-    width: '100%',
-    height: '100%'
+    position: 'absolute',
+    width: '105%',
+    height: '105%'
   },
   name: {
     color: 'white',

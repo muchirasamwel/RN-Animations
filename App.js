@@ -7,11 +7,14 @@ import {
   Text,
   View
 } from 'react-native'
+import { enableScreens } from 'react-native-screens'
 import DeatailsLoader from './AnimationScreens/DetailsLoader'
 import HorizonScroll from './AnimationScreens/HorizonScroll'
 import ScrollMastery from './AnimationScreens/ScrollMastery'
+import MainNavigation from './AnimationScreens/shared/Navigation'
 
 export default function App () {
+  enableScreens(false)
   const translation = useRef(new Animated.ValueXY({ x: 0, y: 0 })).current
   // const animeColor = useRef(new Animated.Value('red')).current
   useEffect(() => {
@@ -48,38 +51,7 @@ export default function App () {
     // <ScrollMastery />
     // <DeatailsLoader />
     <HorizonScroll />
-    // <ScrollView>
-    //   <View style={styles.container}>
-    //     {/* <Animated.View
-    //     onTouchEnd={touchHandler}
-    //     style={{
-    //       width: 100,
-    //       height: 100,
-    //       backgroundColor: 'red',
-    //       transform: [
-    //         { translateX: translation.x },
-    //         { translateY: translation.y }
-    //       ]
-    //     }}
-    //   ></Animated.View> */}
-    //     <Animated.View
-    //       onTouchEnd={touchHandler}
-    //       style={{
-    //         width: 100,
-    //         height: 100,
-    //         backgroundColor: 'blue',
-    //         opacity: translation.x.interpolate({
-    //           inputRange: [0, 50, 100],
-    //           outputRange: [1, 0, 1]
-    //         }),
-    //         transform: [
-    //           { translateX: translation.x },
-    //           { translateY: translation.y }
-    //         ]
-    //       }}
-    //     ></Animated.View>
-    //   </View>
-    // </ScrollView>
+    // <MainNavigation></MainNavigation>
   )
 }
 
