@@ -133,7 +133,7 @@ const HorizonScroll = props => {
     >
       {data.map((back, index) => {
         return (
-          <View style={styles.backContainer}>
+          <View style={styles.backContainer} key={index}>
             <Animated.Image
               style={[
                 styles.backgroundImg,

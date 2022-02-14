@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import {Text, StyleSheet, Animated } from 'react-native'
+import { Text, StyleSheet, Animated } from 'react-native'
 
 const ListItem = ({ item, index, scrollY }) => {
   const inputRange = [
@@ -49,7 +49,7 @@ const ScrollMastery = props => {
       )}
     >
       {data.map((item, index) => (
-        <ListItem item={item} scrollY={scrollY} index={index} />
+        <ListItem item={item} scrollY={scrollY} index={index} key={index} />
       ))}
     </Animated.ScrollView>
   )

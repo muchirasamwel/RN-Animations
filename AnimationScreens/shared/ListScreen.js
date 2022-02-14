@@ -79,7 +79,7 @@ const ListScreen = props => {
     <ScrollView>
       {data.map(item => {
         return (
-          <View style={styles.card}>
+          <View style={styles.card} key={item.id}>
             <TouchableOpacity
               onPress={() => navigation.navigate('Details', { item })}
             >
