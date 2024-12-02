@@ -17,7 +17,7 @@ const MainNavigation = () => {
   const Stack = createSharedElementStackNavigator()
   const Drawer = createDrawerNavigator()
 
-  const stackNav = () => (
+  const StackNav = () => (
     <Stack.Navigator>
       <Stack.Screen
         name='List'
@@ -109,7 +109,7 @@ const MainNavigation = () => {
   return (
     <NavigationContainer>
       <Drawer.Navigator initialRouteName='Home'>
-        <Drawer.Screen name='Home' component={stackNav} />
+        <Drawer.Screen name='Home' component={StackNav} />
         <Drawer.Screen name='HorizontalScroll' component={HorizonScroll} />
         <Drawer.Screen name='ScrollMaster' component={ScrollMastery} />
         <Drawer.Screen name='DetailsLoader' component={DeatailsLoader} />
